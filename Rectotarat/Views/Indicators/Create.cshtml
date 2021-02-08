@@ -1,0 +1,77 @@
+﻿@model Rectotarat.Models.Indicator
+
+<h2>Добавить</h2>
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>Показатель</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="IndicatorId1" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="IndicatorId1" class="form-control" />
+                <span asp-validation-for="IndicatorId1" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="IndicatorId2" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="IndicatorId2" class="form-control" />
+                <span asp-validation-for="IndicatorId2" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="IndicatorId3" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="IndicatorId3" class="form-control" />
+                <span asp-validation-for="IndicatorId3" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="IndicatorName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="IndicatorName" class="form-control" />
+                <span asp-validation-for="IndicatorName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="IndicatorUnit" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="IndicatorUnit" class="form-control" />
+                <span asp-validation-for="IndicatorUnit" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="IndicatorType" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="IndicatorType" class="form-control" asp-items="Html.GetEnumSelectList<IndicatorType>()"></select>
+                <span asp-validation-for="IndicatorType" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="IndicatorDescription" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <textarea asp-for="IndicatorDescription" class="form-control"></textarea>
+                <span asp-validation-for="IndicatorDescription" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Year" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Year" class="form-control" value="@ViewBag.Year" />
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Добавить" class="btn btn-warning" />
+            </div>
+        </div>
+    </div>
+</form>
+<div>
+    <a asp-action="Index" class="btn btn-sm btn-primary">Вернуться</a>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

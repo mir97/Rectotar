@@ -1,0 +1,70 @@
+﻿@model Rectotarat.ViewModels.EditRectorViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Редактировать</h2>
+<form asp-action="Edit" asp-controller="Rectors" method="post" enctype="multipart/form-data">
+    <div class="form-horizontal">
+        <h4>Ректор</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="CurrentRector.RectorId" />
+        <div class="form-group">
+            <label asp-for="CurrentRector.Photo" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <img src="@Model.CurrentRector.Photo" alt="Фотография отсутствует" class="col-md-2">
+                <input type="file" name="upload" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CurrentRector.LastName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CurrentRector.LastName" class="form-control" />
+                <span asp-validation-for="CurrentRector.LastName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CurrentRector.FirstMidName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CurrentRector.FirstMidName" class="form-control" />
+                <span asp-validation-for="CurrentRector.FirstMidName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CurrentRector.MiddleName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CurrentRector.MiddleName" class="form-control" />
+                <span asp-validation-for="CurrentRector.MiddleName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CurrentRector.Email" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CurrentRector.Email" class="form-control" />
+                <span asp-validation-for="CurrentRector.Email" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CurrentRector.University.UniversityName" class="control-label col-md-2"></label>
+            <div class="col-md-10">
+                <select asp-for="CurrentRector.UniversityId" class="form-control" asp-items="@Model.ListUniversities"></select>
+                <span asp-validation-for="CurrentRector.UniversityId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Сохранить" class="btn btn-warning" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index" class="btn btn-sm btn-primary">Вернуться</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,44 @@
+﻿@model Rectotarat.Models.User
+
+@{
+    ViewData["Title"] = "Профиль пользователя";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12" style="height:50px">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 table-bordered text-center" ><h4>Учетная запись</h4></div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" style="padding:0px;">
+            <table class="table table-bordered" style="height:100%">
+
+                <tr>
+                    <td>Email:</td>
+                    <td>@Model.Email</td>
+                </tr>
+
+                <tr>
+                    <td>Роль:</td>
+
+                    @if (User.IsInRole("admin"))
+                    {
+                        <td>Администратор</td>
+                    }
+                    else
+                    {
+                        <td>Пользователь</td>
+                    }
+                </tr>
+            </table>
+        </div>
+       <br><a class="btn btn-primary" href="~/Users/ChangePassword/@Model.Id">Сменить пароль</a><br />
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+</div>
+

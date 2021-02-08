@@ -1,0 +1,43 @@
+﻿@model Rectotarat.Models.Chairperson
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+<div>
+    <h4>Chairperson</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StopDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StopDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rector)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rector.FirstMidName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ChairpersonId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+</body>
+</html>

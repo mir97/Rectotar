@@ -1,0 +1,161 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using Newtonsoft.Json;
+@using Rectotarat.ViewModels;
+@using Rectotarat.Models
+@model IndicatorsViewModel
+@addTagHelper "*,  Rectotarat"
+
+
+
+
+<script type="text/javascript" language="javascript">
+    fireSubmit = function (event) {
+        document.searchForm.onsubmit = function () { return true; };
+        document.searchForm.submit();
+    }
+    confirmFillDataForUniversities = function (event) {
+        document.searchForm.onsubmit = function () { return true; };
+        var ev = document.getElementById("AchievementsCount").value;
+        if (ev > 0) {
+            if (confirm("Все данные университетов за заданный год будут изменены. Вы подтверждаете выполнение?"))
+                document.searchForm.submit()
+            else document.searchForm.onsubmit = function () { return false; }
+        }
+        else {
+            document.searchForm.submit();
+        }
+    };
+</script>
+
+@if (User.Identity.IsAuthenticated)
+{
+    if (User.IsInRole("admin"))
+    {<h2>Показатели для подведения итогов </h2>}
+    if (User.IsInRole("user"))
+    { <h2>Справочнк</h2>}
+}
+
+
+<form name="searchForm" method="post">
+    <input type="hidden" name="AchievementsCount" id="AchievementsCount" value=@Model.AchievementsCount>
+
+
+    <div class="form-inline form-group">
+        <label class="control-label">Год</label>
+
+        @Html.DropDownList("currentYear", Model.ListYears as SelectList,
+                                htmlAttributes: new { @class = "form-control", onchange = "fireSubmit(event)" })
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            if (User.IsInRole("admin"))
+            {
+                <div class="col-md-10">
+                    <button name="action" value="FillDataForUniversities" class="btn btn-default" onclick="confirmFillDataForUniversities(event)">
+                        Загрузить показатели универсsитетам
+                    </button>
+                    <button name="action" value="FillDataFromLastYear" class="btn btn-default" onclick="fireSubmit(event)">
+                        Загрузить из прошлого года
+                    </button>
+                </div>
+            }
+        }
+    </div>
+</form>
+<br>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Indicators.FirstOrDefault().IndicatorId1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Indicators.FirstOrDefault().IndicatorId2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Indicators.FirstOrDefault().IndicatorId3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Indicators.FirstOrDefault().IndicatorName)
+            </th>
+
+
+            @if (User.Identity.IsAuthenticated)
+            {
+
+                if (User.IsInRole("admin"))
+                {
+              
+                }
+
+                if (User.IsInRole("user"))
+                {
+                    <th>
+                        Тип показателя
+                    </th>
+                    <th>
+                        описание показателя
+                    </th>
+                }
+
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Indicators)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IndicatorId1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IndicatorId2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IndicatorId3)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IndicatorName)
+                </td>
+
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("user"))
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IndicatorType)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IndicatorDescription)
+                        </td>
+                    }
+
+                    if (User.IsInRole("admin"))
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IndicatorUnit)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.IndicatorId">Изменить</a>
+                            <a asp-action="Delete" asp-route-id="@item.IndicatorId"> Удалить </a>
+                            <a asp-action="Details" asp-route-id="@item.IndicatorId">Подробно</a>
+                        </td>
+                    }
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (User.Identity.IsAuthenticated)
+{
+    if (User.IsInRole("admin"))
+    {
+        <p>
+            <a asp-action="Create" class="btn btn-info" asp-route-id="@Model.ListYears.SelectedValue">Добавить</a>
+        </p>
+    }
+}
+        @*<page-link page-model="Model.PageViewModel" page-action="Index"></page-link>*@

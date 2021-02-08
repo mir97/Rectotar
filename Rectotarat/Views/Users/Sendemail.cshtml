@@ -1,0 +1,32 @@
+﻿@model Rectotarat.Models.IndexViewModel
+
+<br>
+
+
+
+<div class="container">
+    <form asp-controller="Users" asp-action="Sendemail" method="post" class="form-horizontal">
+
+        <div class="form-group">
+
+            <label class="control-label">Выбирете получателя </label>
+            @Html.DropDownList("email", Model.Listemail as SelectList,
+                htmlAttributes: new { @class = "form-control", onchange = "fireSubmit(event)" })
+            <br>
+
+            <label class="control-label">Заголовок сообщения</label>
+            @Html.TextBox("Headtext", "", htmlAttributes: new { @class = "form-control" })
+            <br>
+            <p style='font-family: Verdana; font-size: 8pt; color: #000000; font-weight: bold;'>Ваше сообщение:<br>
+             @Html.TextArea("text", "", 5, 50, null)    
+             <br>
+             <input type="submit" value="Отправить" class="btn btn-default" />
+             <input name="action" type="reset" value="Очистить форму" class="btn btn-default" />
+</div>
+    </form>
+</div>
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>

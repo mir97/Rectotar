@@ -1,0 +1,148 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="~/js/site.js"></script>
+    <script type="text/javascript" src="~/js/jquery-1.2.6.js"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/main.css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a asp-area="Home" asp-controller="Home" asp-action="Index" class="navbar-brand">Rectotarat</a>
+            </div>
+            <div class="navbar-collapse collapse">
+
+
+
+
+                @if (User.Identity.IsAuthenticated)
+                {
+
+
+                    if (User.IsInRole("admin"))
+                    {
+                        <ul class="nav navbar-nav navbar-left">
+
+
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    Служебная информация
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li> <a asp-controller="Rectors" asp-action="Index" class="text-left">Ректорат</a></li>
+                                    <li><a asp-controller="Universities" asp-action="Index" class="text-left">Университеты</a></li>
+                                    <li> <a asp-controller="Documents" asp-action="Index" class="text-left">Документы</a></li>
+                                    <li> <a asp-controller="Chairpersons" asp-action="Index" class="text-left">Председатели</a></li>
+                                    <li> <a asp-controller="News" asp-action="Index" class="text-left">Новости</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    Администрированние
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li> <a asp-controller="Users" asp-action="Index">Работа с учетными записями пользователей</a></li>
+                                    <li> <a asp-controller="Roles" asp-action="Index">Работа с ролями</a></li>
+
+                                </ul>
+                            </li>
+
+                            <li><a asp-controller="Indicators" asp-action="Index" class="text-left">Показатели</a></li>
+                            <li><a asp-controller="Achievements" asp-action="Index" class="text-left">Рузультаты(Views)</a></li>
+                            <li><a asp-controller="AchievementsResult" asp-action="Index" class="text-left">Рузультаты(Расчет)</a></li>
+
+                           
+                        </ul>
+
+                    }
+
+                    if (User.IsInRole("user"))
+                    {
+                        <ul class="nav navbar-nav navbar-left">
+                            <li><a asp-controller="GridAchievements" asp-action="Index" class="text-left">Рузультаты(Views)</a></li>
+                            <li><a asp-controller="Indicators" asp-action="Index" class="text-left">Справочник</a></li>
+                            <li><a asp-controller="Documents" asp-action="Index1" class="text-left">Нормативные документы</a></li>
+                        </ul>
+
+                    }
+                }
+
+
+
+                <ul class="nav navbar-nav navbar-right ">
+
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+
+                        if (User.IsInRole("admin"))
+                        {
+                            <li><a asp-controller="Raschet" asp-action="Index" class="text-left">Сумма мест</a></li>
+                            <li><a asp-controller="Users" asp-action="Sendemail">Рассылка писем</a></li>
+                            <li><a asp-controller="Users" asp-action="Main">Настройки профиля</a></li>
+                                                    <li>
+                                                        <form method="post" asp-controller="Account" asp-action="LogOff" style="padding:10px">
+                                                            <input type="submit" value="Выход" />
+                                                        </form>
+                                                    </li>
+
+                        }
+
+                        if (User.IsInRole("user"))
+                        {
+                            <li><a asp-controller="Users" asp-action="Main">Настройки профиля</a></li>
+                                                    <li>
+                                                        <form method="post" asp-controller="Account" asp-action="LogOff" style="padding:10px">
+                                                            <input type="submit" value="Выход" />
+                                                        </form>
+                                                    </li>
+
+
+                        }
+
+
+                    }
+
+                    else
+                    {
+
+                        <li><a asp-controller="Account" asp-action="Login">Вход</a></li>
+
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; Rectotarat </p>
+        </footer>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,79 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using Newtonsoft.Json;
+@using Rectotarat.ViewModels;
+@using Rectotarat.Models
+@model IndexViewModel
+@addTagHelper "*,  Rectotarat"
+
+<script type="text/javascript" language="javascript">
+    fireSubmit = function (event) {
+                document.searchForm.onsubmit = function () {return true;};
+                document.searchForm.submit();
+            }
+
+</script>
+<h2>Сумма мест (занятые места)</h2>
+<form name="searchForm" method="get">
+    <div class="form-inline form-group">
+
+        <div class="col-md-10">
+            <label class="control-label">Год</label>
+            @Html.DropDownList("currentYear", Model.ListYears as SelectList,
+              htmlAttributes: new { @class = "form-control", onchange = "fireSubmit(event)" })
+            <button name="cmd" value="CalculatePositions" class="btn btn-default" onclick="fireSubmit(event)">
+                Найти данные за указанный год
+            </button>
+            <button name="cmd" a asp-controller="Raschet" asp-action="OnPostExport" value="Print" class="btn btn-default" onclick="fireSubmit(event)">
+                Сформировать отчет
+            </button>
+            <button name="cmd" a asp-controller="Raschet" asp-action="OnPostExportA" value="Print" class="btn btn-default" onclick="fireSubmit(event)">
+                Сформировать отчет(Результаты)
+            </button>
+        </div>
+  
+
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Университет
+            </th>
+            <th>
+                Сумма мест
+            </th>
+            <th>
+                Место
+            </th>
+            <th>
+                Год
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Raschets)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Univercity.UniversityName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SumaValue)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Position)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Year)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

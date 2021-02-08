@@ -1,0 +1,60 @@
+﻿@model Rectotarat.Models.Rector
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Удалить</h2>
+
+<h3>Вы действительно хотите удалить?</h3>
+<div>
+    <h4>Ректор</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstMidName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstMidName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MiddleName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Photo)
+        </dt>
+        <dd>
+            <img src="@Model.Photo" alt="Изображение отсутствует" />
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.University.UniversityName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.University.UniversityName)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="hidden" asp-for="RectorId" />
+            <input type="submit" value="Удалить" class="btn btn-sm btn-danger" />
+            <a asp-action="Index" class="btn btn-sm btn-primary">Вернуться</a>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,44 @@
+﻿@model Rectotarat.Models.University
+
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Подробно</h2>
+
+<div>
+    <h4>Университет</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Logo)
+        </dt>
+        <dd>
+            <img src="@Model.Logo" alt="Фотография отсутствует" width="80" height="80">
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UniversityName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UniversityName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Website)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Website)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" class="btn btn-sm btn-primary" asp-route-id="@Model.UniversityId">Изменить</a>
+    <a asp-action="Index" class="btn btn-sm btn-primary">Вернуться</a>
+</div>

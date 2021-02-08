@@ -1,0 +1,50 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using Newtonsoft.Json;
+@using Rectotarat.ViewModels;
+@using Rectotarat.Models
+@model IndexViewModel
+@addTagHelper "*,  Rectotarat"
+
+<style>
+    .top__link{
+        margin-bottom:50px;
+    }
+    .top__header{
+        font-size:24px;
+        width:100%;
+    }
+    .top__lh{
+        width:100%;
+    }
+    .top__block{
+        margin-bottom:20px;
+    }
+</style>
+
+<body>
+    <section>
+
+        <div class="top__link">
+            <h2>Список документов</h2>
+            @foreach (var item in Model.Documents)
+            {
+                 <a href="@item.DocumentURL" target="_blank" class="top__lh"><span class="top__lh"> @Html.DisplayFor(modelItem => item.DocumentName)</span></a><br>
+            }
+        </div>
+
+        <div class="top__conetxt">
+            @foreach (var item in Model.Documents)
+            {
+            <div class="top__block">
+                <span class="top__header">
+                    @Html.DisplayFor(modelItem => item.DocumentName)
+                </span>
+                <div class="message__text">
+                    @Html.DisplayFor(modelItem => item.DocumentDescription)
+                </div>
+            </div>
+            }
+        </div>
+    </section>
+</body>
+   

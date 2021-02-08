@@ -1,0 +1,33 @@
+C:\Users\Никита\Desktop\Rectotarat\Rectotarat\bin\Debug\netcoreapp2.0\Rectotarat.deps.json
+C:\Users\Никита\Desktop\Rectotarat\Rectotarat\bin\Debug\netcoreapp2.0\Rectotarat.runtimeconfig.json
+C:\Users\Никита\Desktop\Rectotarat\Rectotarat\bin\Debug\netcoreapp2.0\Rectotarat.runtimeconfig.dev.json
+C:\Users\Никита\Desktop\Rectotarat\Rectotarat\bin\Debug\netcoreapp2.0\Rectotarat.dll
+C:\Users\Никита\Desktop\Rectotarat\Rectotarat\bin\Debug\netcoreapp2.0\Rectotarat.pdb
+C:\Users\Никита\Desktop\Rectotarat\Rectotarat\obj\Debug\netcoreapp2.0\Rectotarat.csproj.CoreCompileInputs.cache
+C:\Users\Никита\Desktop\Rectotarat\Rectotarat\obj\Debug\netcoreapp2.0\Rectotarat.AssemblyInfoInputs.cache
+C:\Users\Никита\Desktop\Rectotarat\Rectotarat\obj\Debug\netcoreapp2.0\Rectotarat.AssemblyInfo.cs
+C:\Users\Никита\Desktop\Rectotarat\Rectotarat\obj\Debug\netcoreapp2.0\Rectotarat.dll
+C:\Users\Никита\Desktop\Rectotarat\Rectotarat\obj\Debug\netcoreapp2.0\Rectotarat.pdb
+C:\Users\Никита\Desktop\Rectotarat\Rectotarat\obj\Debug\netcoreapp2.0\Rectotarat.csprojResolveAssemblyReference.cache
+C:\Users\Никита\Desktop\Диплом\Rectotarat\Rectotarat\bin\Debug\netcoreapp2.0\Rectotarat.deps.json
+C:\Users\Никита\Desktop\Диплом\Rectotarat\Rectotarat\bin\Debug\netcoreapp2.0\Rectotarat.runtimeconfig.json
+C:\Users\Никита\Desktop\Диплом\Rectotarat\Rectotarat\bin\Debug\netcoreapp2.0\Rectotarat.runtimeconfig.dev.json
+C:\Users\Никита\Desktop\Диплом\Rectotarat\Rectotarat\bin\Debug\netcoreapp2.0\Rectotarat.dll
+C:\Users\Никита\Desktop\Диплом\Rectotarat\Rectotarat\bin\Debug\netcoreapp2.0\Rectotarat.pdb
+C:\Users\Никита\Desktop\Диплом\Rectotarat\Rectotarat\obj\Debug\netcoreapp2.0\Rectotarat.csprojResolveAssemblyReference.cache
+C:\Users\Никита\Desktop\Диплом\Rectotarat\Rectotarat\obj\Debug\netcoreapp2.0\Rectotarat.csproj.CoreCompileInputs.cache
+C:\Users\Никита\Desktop\Диплом\Rectotarat\Rectotarat\obj\Debug\netcoreapp2.0\Rectotarat.AssemblyInfoInputs.cache
+C:\Users\Никита\Desktop\Диплом\Rectotarat\Rectotarat\obj\Debug\netcoreapp2.0\Rectotarat.AssemblyInfo.cs
+C:\Users\Никита\Desktop\Диплом\Rectotarat\Rectotarat\obj\Debug\netcoreapp2.0\Rectotarat.dll
+C:\Users\Никита\Desktop\Диплом\Rectotarat\Rectotarat\obj\Debug\netcoreapp2.0\Rectotarat.pdb
+C:\Top Secret\lab\Rectotarat\Rectotarat\bin\Debug\netcoreapp2.0\Rectotarat.deps.json
+C:\Top Secret\lab\Rectotarat\Rectotarat\bin\Debug\netcoreapp2.0\Rectotarat.runtimeconfig.json
+C:\Top Secret\lab\Rectotarat\Rectotarat\bin\Debug\netcoreapp2.0\Rectotarat.runtimeconfig.dev.json
+C:\Top Secret\lab\Rectotarat\Rectotarat\bin\Debug\netcoreapp2.0\Rectotarat.pdb
+C:\Top Secret\lab\Rectotarat\Rectotarat\obj\Debug\netcoreapp2.0\Rectotarat.csprojResolveAssemblyReference.cache
+C:\Top Secret\lab\Rectotarat\Rectotarat\obj\Debug\netcoreapp2.0\Rectotarat.csproj.CoreCompileInputs.cache
+C:\Top Secret\lab\Rectotarat\Rectotarat\obj\Debug\netcoreapp2.0\Rectotarat.AssemblyInfoInputs.cache
+C:\Top Secret\lab\Rectotarat\Rectotarat\obj\Debug\netcoreapp2.0\Rectotarat.AssemblyInfo.cs
+C:\Top Secret\lab\Rectotarat\Rectotarat\obj\Debug\netcoreapp2.0\Rectotarat.dll
+C:\Top Secret\lab\Rectotarat\Rectotarat\obj\Debug\netcoreapp2.0\Rectotarat.pdb
+C:\Top Secret\lab\Rectotarat\Rectotarat\obj\Debug\netcoreapp2.0\Rectotarat.csproj.CopyComplete

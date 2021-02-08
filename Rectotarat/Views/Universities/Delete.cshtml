@@ -1,0 +1,49 @@
+﻿@model Rectotarat.Models.University
+
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Удалить</h2>
+
+<h3>Вы действительно хотите удалить?</h3>
+<div>
+    <h4>Университет</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UniversityName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UniversityName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Website)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Website)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Logo)
+        </dt>
+        <dd>
+            <img src="@Model.Logo" alt="Логотип отсутствует"/>
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="hidden" asp-for="UniversityId" />
+
+            <input type="submit" class="btn btn-sm btn-danger" value="Удалить" class="btn btn-default" /> |
+            <a asp-action="Index" class="btn btn-sm btn-primary">Вернуться</a>
+        </div>
+    </form>
+</div>

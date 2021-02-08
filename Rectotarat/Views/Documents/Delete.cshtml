@@ -1,0 +1,53 @@
+@model Rectotarat.Models.Document
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Удалить</h2>
+
+<h3>Вы действительно хотите удалить?</h3>
+<div>
+    <h4>Документ</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RegistrationNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RegistrationNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DocumentName)
+        </dt>
+        <dd>
+                <a href="@Model.DocumentURL" target="_blank">@Html.DisplayFor(model => model.DocumentName)</a>
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DocumentDescription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DocumentDescription)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RegistrationDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RegistrationDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Chairperson.Rector.FullName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Chairperson.ChairpersonId)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="hidden" asp-for="DocumentId" />
+            <input type="submit" value="Удалить" class="btn btn-sm btn-danger" />
+            <a asp-action="Index" class="btn btn-sm btn-primary">Вернуться</a>
+        </div>
+    </form>
+</div>

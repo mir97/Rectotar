@@ -1,0 +1,77 @@
+@using Microsoft.AspNetCore.Http;
+@using Newtonsoft.Json;
+@using Rectotarat.ViewModels;
+@using Rectotarat.Models
+@model IndexViewModel
+@addTagHelper "*,  Rectotarat"
+
+<h2>Документы Совета</h2>
+
+<div class="container">
+    <form method="get" role="form" class="form-horizontal">
+
+        <div class="form-group">
+
+            <label class="control-label">Регистрационный номер: </label>
+            @Html.TextBox("RegistrationNumber", Model.FilterViewModel.SelectedRegistrationNumber, htmlAttributes: new { @class = "form-control" })
+            <label class="control-label"> Название: </label>
+            @Html.TextBox("DocumentName", Model.FilterViewModel.SelectedDocumentName, htmlAttributes: new { @class = "form-control" })
+            <br>
+            <input type="submit" value="Отфильтровать" class="btn btn-default" />
+        </div>
+    </form>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Регистрационный номер
+            </th>
+            <th>
+                Ссылка на документ
+            </th>
+
+            <th>
+                Содержание
+            </th>
+            <th>
+                Дата издания
+            </th>
+            <th>
+                ФИО Ректора
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Documents) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegistrationNumber)
+            </td>
+            <td>
+                <a href="@item.DocumentURL" target="_blank">@Html.DisplayFor(modelItem => item.DocumentName)</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DocumentDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegistrationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Chairperson.Rector.FullName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.DocumentId">Изменить</a> |
+                <a asp-action="Details" asp-route-id="@item.DocumentId">Подробно</a> |
+                <a asp-action="Delete" asp-route-id="@item.DocumentId">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<p>
+    <page-link page-model="Model.PageViewModel" page-action="Index"></page-link>
+</p>
+<a asp-action="Create" class="btn btn-info right">Добавить</a>

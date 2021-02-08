@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Rectotarat.Models.News>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    .info{
+        margin-bottom:50px;
+        margin-top:100px;
+    }
+    .message {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        margin-bottom:50px;
+    }
+
+    .message-header.message__text {
+        display: flex;
+        width: 100%;
+        text-align: center;
+    }
+    .message-header{
+        font-size:24px;
+    }
+    .message-info {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+        align-content: center;
+    }
+</style>
+
+<body>
+    <h3>Новости</h3>
+
+    @foreach (var item in Model)
+    {
+        <div class="message">
+            <span class="message-header">
+                  Заголовок: @Html.DisplayFor(modelItem => item.Header)
+            </span>
+            <div class="message-info">
+                <span class="message-info__data">
+                    Дата публиации: @Html.DisplayFor(modelItem => item.PublicDate)
+                </span>
+                <span class="message-info__university">
+                    @Html.DisplayFor(modelItem => item.Univercity.UniversityName)
+                </span>
+            </div>
+            <div class="message__text">
+                Текст: @Html.DisplayFor(modelItem => item.Message)
+            </div>
+        </div>
+    }
+</body>

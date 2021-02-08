@@ -1,0 +1,72 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using Newtonsoft.Json;
+@using Rectotarat.ViewModels;
+@using Rectotarat.Models
+@model IndexViewModel
+@addTagHelper "*,  Rectotarat"
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+ <h2>Председатели</h2>
+
+<table class="table">
+   
+    <thead>
+        <tr>
+                <th>
+                    Дата назначения
+                </th>
+                <th>
+                    Дата отставки
+                </th>
+                <th>
+                    Имя ректора
+                </th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Chairpersons) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StopDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rector.FirstMidName)
+            </td>
+
+                    <td class="btn-group">
+                        <a asp-action="Edit" asp-route-id="@item.ChairpersonId" roles="admin">Изменить</a> |
+                        <a asp-action="Details" asp-route-id="@item.ChairpersonId">Подробно</a> |
+                        <a asp-action="Delete" asp-route-id="@item.ChairpersonId" roles="admin">Удалить</a>
+                    </td>
+        </tr>
+}
+    </tbody>
+</table>
+    <page-link page-model="Model.PageViewModel" page-action="Index"></page-link>
+@if (User.Identity.IsAuthenticated)
+{
+
+
+    if (User.IsInRole("admin"))
+    {
+
+        <p>
+            <a asp-action="Create" class="btn btn-info" >Добавить</a>
+        </p>
+    }
+}
+
+</body>
+</html>

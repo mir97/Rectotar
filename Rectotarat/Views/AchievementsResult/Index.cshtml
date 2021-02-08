@@ -1,0 +1,94 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using Newtonsoft.Json;
+@using Rectotarat.ViewModels;
+@using Rectotarat.Models
+@model IndexViewModel
+@addTagHelper "*,  Rectotarat"
+
+<script type="text/javascript" language="javascript">
+    fireSubmit = function (event) {
+                document.searchForm.onsubmit = function () {return true;};
+                document.searchForm.submit();
+            }
+
+</script>
+<h2>Достижения </h2>
+<form name="searchForm" method="get">
+    <div class="form-inline form-group">
+
+        <div class="col-md-10">
+            <label class="control-label">Год</label>
+            @Html.DropDownList("currentYear", Model.ListYears as SelectList,
+                htmlAttributes: new { @class = "form-control", onchange = "fireSubmit(event)" })
+            <button name="cmd" value="CalculatePositions" class="btn btn-default" onclick="fireSubmit(event)">
+                Расчет
+            </button>
+        </div>
+
+        <div class="col-md-6">
+            <label class="control-label">Название</label>
+            @Html.TextBox("UniversityName", Model.FilterViewModel.SelectedUniversityName, htmlAttributes: new { @class = "form-control" })
+            <input type="submit" value="Отфильтровать" class="btn btn-default" />
+        </div>
+
+
+
+    </div>
+</form>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Achievements.FirstOrDefault().Indicator.IndicatorCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Achievements.FirstOrDefault().Indicator.IndicatorName)
+            </th>
+            <th>
+                    @Html.DisplayNameFor(model => model.Achievements.FirstOrDefault().Univercity.UniversityName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Achievements.FirstOrDefault().IndicatorValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Achievements.FirstOrDefault().Position)
+            </th>
+            <th>
+               Тип показателя
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Achievements)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Indicator.IndicatorCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Indicator.IndicatorName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Univercity.UniversityName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IndicatorValue)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Position)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Indicator.IndicatorType)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+<page-link page-model="Model.PageViewModel" page-action="Index"></page-link>
+

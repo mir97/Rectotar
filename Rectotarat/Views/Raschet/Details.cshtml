@@ -1,0 +1,57 @@
+﻿@model Rectotarat.Models.Achievement
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+<div>
+    <h4>Achievement</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IndicatorValue)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IndicatorValue)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Position)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Position)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Year)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Indicator)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Indicator.IndicatorId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Univercity)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Univercity.UniversityId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.AchievementId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+</body>
+</html>

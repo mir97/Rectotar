@@ -1,0 +1,80 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using Newtonsoft.Json;
+@using Rectotarat.ViewModels;
+@using Rectotarat.Models
+@model IndexViewModel
+@addTagHelper "*,  Rectotarat"
+
+<h2>Ректоры</h2>
+<div class="container">
+    <form method="get" role="form" class="form-horizontal">
+
+        <div class="form-group">
+
+            <label class="control-label">Фамилия: </label>
+            @Html.TextBox("LastName", Model.FilterViewModel.SelectedLastName, htmlAttributes: new { @class = "form-control" })
+            <label class="control-label">Email: </label>
+            @Html.TextBox("Email", Model.FilterViewModel.SelectedEmail, htmlAttributes: new { @class = "form-control" })
+            <br>
+            <input type="submit" value="Отфильтровать" class="btn btn-default" />
+        </div>
+    </form>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Фамилия
+            </th>
+            <th>
+                Имя
+            </th>
+            <th>
+                Отчество
+            </th>
+            <th>
+                E-mail
+            </th>
+            <th>
+                Фото
+            </th>
+            <th>
+                Университет
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Rectors) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstMidName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MiddleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <img src="@item.Photo" alt="Нет фото" width="30" height="30">
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.University.UniversityName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.RectorId">Изменить</a> |
+                <a asp-action="Details" asp-route-id="@item.RectorId">Подробно</a> |
+                <a asp-action="Delete" asp-route-id="@item.RectorId">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<p>
+    <page-link page-model="Model.PageViewModel" page-action="Index"></page-link>
+</p>
+<a asp-action="Create" class="btn btn-info right">Добавить</a>

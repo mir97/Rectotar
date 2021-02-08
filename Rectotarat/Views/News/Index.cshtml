@@ -1,0 +1,62 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using Newtonsoft.Json;
+@using Rectotarat.ViewModels;
+@using Rectotarat.Models
+@model IndexViewModel
+@addTagHelper "*,  Rectotarat"
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Заголовок
+                </th>
+                <th>
+                   Содержание
+                </th>
+                <th>
+                   Дата публикации
+                </th>
+                <th>
+                    Университет
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Newss)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Header)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Message)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PublicDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Univercity.UniversityName)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Newsid">Именить</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Newsid">Удалить</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <page-link page-model="Model.PageViewModel" page-action="Index"></page-link>
+    <a asp-action="Create" class="btn btn-info right">Добавить</a>
+</body>
+</html>
